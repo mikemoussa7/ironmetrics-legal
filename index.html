@@ -691,10 +691,11 @@
       document.getElementById("yr").textContent = new Date().getFullYear();
     </script>
 
-    <!-- ================================================================
-         CLOUDFLARE WEB ANALYTICS (privacy-first, free, no cookies)
-         Cloudflare dashboard -> Analytics & Logs -> Web Analytics -> Add a site
-         (ironmetricsapp.com) -> copy the <script defer ...> beacon -> paste here.
-         ================================================================ -->
+    <!-- Cloudflare Web Analytics (privacy-first, no cookies) -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "314451bfe5b44706a5b8a2224af6af00"}'
+    ></script>
   </body>
 </html>
