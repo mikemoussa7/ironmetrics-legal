@@ -1,188 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ironmetrics — Legal Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #f3f4f6;
-      --card-bg: #ffffff;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --accent: #0f172a;
-      --accent-hover: #1e293b;
-      --accent-blue: #0070f3;
-      --border-color: #e5e7eb;
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ironmetrics — Build muscle without the guesswork</title>
+    <meta
+      name="description"
+      content="Ironmetrics tells you exactly what to lift next — adaptive workout tracking that puts progressive overload on autopilot. For beginners and lifters alike. Android, 14-day free trial."
+    />
+    <link rel="canonical" href="https://ironmetricsapp.com/" />
+    <link rel="icon" href="assets/icon.png" />
 
-    @media (prefers-color-scheme: dark) {
+    <!-- Social / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ironmetrics — Build muscle without the guesswork" />
+    <meta
+      property="og:description"
+      content="The workout tracker that tells you exactly what to lift next. Progressive overload on autopilot, from your first workout."
+    />
+    <meta property="og:image" content="https://ironmetricsapp.com/assets/og.png" />
+    <meta property="og:url" content="https://ironmetricsapp.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
       :root {
-        --bg-color: #0b0f19;
-        --card-bg: #111827;
-        --text-primary: #f3f4f6;
-        --text-secondary: #9ca3af;
-        --accent: #ffffff;
-        --accent-hover: #e5e7eb;
-        --accent-blue: #3b82f6;
-        --border-color: #1f2937;
-        --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        --bg: #08080c;
+        --bg-2: #0e1024;
+        --card: #14141b;
+        --border: #26262f;
+        --text: #f4f4f6;
+        --muted: #a1a1ad;
+        --blue: #0a84ff;
+        --orange: #ff6b35;
+        --green: #34c759;
+        --radius: 18px;
+        --max: 1080px;
       }
-    }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      .brand {
+        font-family: "Outfit", sans-serif;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .accent-orange {
+        color: var(--orange);
+      }
+      .accent-blue {
+        color: var(--blue);
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(8, 8, 12, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 22px;
+      }
+      .brand img {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue);
+        color: #fff;
+        font-weight: 700;
+        font-family: "Outfit", sans-serif;
+        padding: 11px 20px;
+        border-radius: 999px;
+        font-size: 15px;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        opacity: 0.95;
+      }
+      .btn-nav {
+        padding: 9px 18px;
+        font-size: 14px;
+      }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
+      /* HERO */
+      .hero {
+        position: relative;
+        background: radial-gradient(
+            900px 500px at 75% -10%,
+            rgba(10, 132, 255, 0.16),
+            transparent 60%
+          ),
+          radial-gradient(700px 500px at 0% 20%, rgba(255, 107, 53, 0.1), transparent 55%);
+        padding: 72px 0 40px;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 60px);
+        font-weight: 800;
+      }
+      .hero p.sub {
+        color: var(--muted);
+        font-size: clamp(17px, 2.2vw, 20px);
+        margin: 20px 0 28px;
+        max-width: 33ch;
+      }
+      .cta-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .badge img {
+        height: 56px;
+        display: block;
+      }
+      .micro {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 16px;
+      }
+      .phone {
+        justify-self: center;
+        max-width: 300px;
+        width: 100%;
+        border-radius: 34px;
+        box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9),
+          0 0 60px rgba(10, 132, 255, 0.12);
+      }
 
-    .container {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      max-width: 600px;
-      width: 100%;
-      padding: 3rem 2rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
+      /* BANDS */
+      section {
+        padding: 64px 0;
+      }
+      .eyebrow {
+        color: var(--orange);
+        font-weight: 700;
+        font-family: "Outfit", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 13px;
+      }
+      h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 800;
+        margin: 10px 0 0;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: 19px;
+        margin-top: 14px;
+        max-width: 60ch;
+      }
+      .problem {
+        text-align: center;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: var(--bg-2);
+      }
+      .problem p {
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(22px, 3.2vw, 30px);
+        font-weight: 600;
+        max-width: 22ch;
+        margin: 0 auto;
+        line-height: 1.3;
+      }
+      .problem .hl {
+        color: var(--text);
+      }
+      .problem .dim {
+        color: var(--muted);
+      }
 
-    .container:hover {
-      transform: translateY(-4px);
-    }
+      /* FEATURES */
+      .feat {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        margin-bottom: 56px;
+      }
+      .feat:last-child {
+        margin-bottom: 0;
+      }
+      .feat.rev .txt {
+        order: 2;
+      }
+      .feat h3 {
+        font-size: 27px;
+        font-weight: 700;
+      }
+      .feat p {
+        color: var(--muted);
+        font-size: 17px;
+        margin-top: 10px;
+      }
+      .feat .shot {
+        justify-self: center;
+        max-width: 260px;
+        width: 100%;
+        border-radius: 30px;
+        box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.9);
+      }
 
-    .logo-container {
-      margin-bottom: 2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
-    }
+      /* PRICING / CALLOUT */
+      .callout {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 40px;
+        text-align: center;
+      }
+      .callout h2 {
+        margin-bottom: 8px;
+      }
+      .price {
+        font-family: "Outfit", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 6px 0 4px;
+      }
 
-    .logo-icon {
-      font-family: 'Outfit', sans-serif;
-      color: #ffffff;
-      font-size: 2rem;
-      font-weight: 700;
-    }
+      /* WAITLIST */
+      .waitlist {
+        text-align: center;
+        background: radial-gradient(
+          700px 300px at 50% 0%,
+          rgba(255, 107, 53, 0.1),
+          transparent 60%
+        );
+      }
+      .form-slot {
+        max-width: 440px;
+        margin: 24px auto 0;
+      }
+      .form-slot form {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .form-slot input[type="email"] {
+        flex: 1;
+        min-width: 220px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 13px 16px;
+        border-radius: 12px;
+        font-size: 16px;
+      }
+      .form-slot .btn {
+        background: var(--orange);
+      }
+      .form-note {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 12px;
+      }
 
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 2.25rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.025em;
-    }
+      /* FAQ */
+      .faq details {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 4px 20px;
+        margin-bottom: 12px;
+        background: var(--card);
+      }
+      .faq summary {
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 14px 0;
+        list-style: none;
+      }
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq summary::after {
+        content: "+";
+        float: right;
+        color: var(--muted);
+      }
+      .faq details[open] summary::after {
+        content: "\2013";
+      }
+      .faq p {
+        color: var(--muted);
+        padding-bottom: 16px;
+      }
 
-    p.tagline {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin-bottom: 2.5rem;
-    }
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 40px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      footer a:hover {
+        color: var(--text);
+      }
+      footer .links a {
+        margin-left: 18px;
+      }
 
-    .links-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
+      @media (max-width: 800px) {
+        .hero .wrap,
+        .feat {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero p.sub {
+          max-width: none;
+        }
+        .cta-row {
+          justify-content: center;
+        }
+        .feat.rev .txt {
+          order: 0;
+        }
+        .phone {
+          order: -1;
+          max-width: 240px;
+        }
+        footer .wrap {
+          flex-direction: column;
+          text-align: center;
+        }
+        footer .links a {
+          margin: 0 9px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <a class="brand" href="/"><img src="assets/icon.png" alt="Ironmetrics" />Ironmetrics</a>
+        <a
+          class="btn btn-nav"
+          href="https://play.google.com/store/apps/details?id=com.thebigm.ironmetrics&referrer=utm_source%3Dlanding%26utm_medium%3Dnav%26utm_campaign%3Dsite"
+          >Get the app</a
+        >
+      </div>
+    </nav>
 
-    .legal-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 1.5rem;
-      background-color: var(--bg-color);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
-      transition: all 0.2s ease;
-    }
+    <!-- HERO -->
+    <header class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Build muscle <span class="accent-orange">without the guesswork</span></h1>
+          <p class="sub">
+            Ironmetrics tells you exactly what weight and reps to do next — so you just show up
+            and lift. From your first workout to your thousandth.
+          </p>
+          <div class="cta-row">
+            <a
+              class="badge"
+              href="https://play.google.com/store/apps/details?id=com.thebigm.ironmetrics&referrer=utm_source%3Dlanding%26utm_medium%3Dhero%26utm_campaign%3Dsite"
+            >
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+              />
+            </a>
+          </div>
+          <p class="micro">Android · 14-day free trial · built by one lifter who codes</p>
+        </div>
+        <img
+          class="phone"
+          src="assets/logger.png"
+          alt="Ironmetrics workout logger showing the next set already filled in"
+        />
+      </div>
+    </header>
 
-    .legal-link:hover {
-      border-color: var(--accent-blue);
-      background-color: rgba(59, 130, 246, 0.05);
-      transform: translateX(4px);
-    }
+    <!-- PROBLEM -> FIX -->
+    <section class="problem">
+      <div class="wrap">
+        <p>
+          <span class="dim"
+            >Most gym apps are spreadsheets with a paint job — you do all the thinking.</span
+          >
+          <span class="hl">
+            Ironmetrics does the thinking: it reads your history and hands you the next set.</span
+          >
+        </p>
+      </div>
+    </section>
 
-    .link-arrow {
-      color: var(--accent-blue);
-      font-size: 1.25rem;
-      transition: transform 0.2s ease;
-    }
+    <!-- FEATURES -->
+    <section>
+      <div class="wrap">
+        <div class="feat rev">
+          <div class="txt">
+            <span class="eyebrow">Real progress</span>
+            <h3>See yourself get stronger</h3>
+            <p>
+              Every personal record, your weekly volume, your estimated 1RM — the receipts that
+              you're actually progressing, at a glance.
+            </p>
+          </div>
+          <img class="shot" src="assets/insights.png" alt="Insights: volume, PRs and estimated 1RM" />
+        </div>
 
-    .legal-link:hover .link-arrow {
-      transform: translateX(4px);
-    }
+        <div class="feat">
+          <div class="txt">
+            <span class="eyebrow">Bulletproof</span>
+            <h3>Never lose a workout</h3>
+            <p>
+              Offline-first. Log in a basement gym with zero signal — everything syncs the moment
+              you're back online. Your data is always yours, exportable anytime.
+            </p>
+          </div>
+          <img class="shot" src="assets/dashboard.png" alt="Home dashboard" />
+        </div>
 
-    footer {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.5rem;
-    }
+        <div class="feat rev">
+          <div class="txt">
+            <span class="eyebrow">Beginner-friendly</span>
+            <h3>No gym experience needed</h3>
+            <p>
+              A built-in plate calculator ("what goes on the bar?") and auto-generated warm-ups
+              take the intimidation out of your first sessions — then grow with you as you advance.
+            </p>
+          </div>
+          <img class="shot" src="assets/warmup.png" alt="Auto-generated warm-up sets" />
+        </div>
+      </div>
+    </section>
 
-    footer a {
-      color: var(--accent-blue);
-      text-decoration: none;
-    }
+    <!-- WHO FOR / PRICING -->
+    <section>
+      <div class="wrap">
+        <div class="callout">
+          <span class="eyebrow">Week 1 or year 10</span>
+          <h2>Grows with you</h2>
+          <p class="lead" style="margin: 12px auto 0; text-align: center">
+            Beginners get automatic progression so they build muscle without learning to program.
+            Experienced lifters get the depth — RPE, estimated 1RM, custom programs, per-gym
+            equipment profiles — without slowing down.
+          </p>
+          <hr style="border: none; border-top: 1px solid var(--border); margin: 28px 0" />
+          <p class="price">Free for 14 days — then $4.99/mo or $39.99/yr</p>
+          <p style="color: var(--muted)">
+            Cancel anytime · No ads · Export or delete your data whenever
+          </p>
+          <div class="cta-row" style="justify-content: center; margin-top: 22px">
+            <a
+              class="badge"
+              href="https://play.google.com/store/apps/details?id=com.thebigm.ironmetrics&referrer=utm_source%3Dlanding%26utm_medium%3Dpricing%26utm_campaign%3Dsite"
+            >
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
+    <!-- iOS WAITLIST -->
+    <section class="waitlist">
+      <div class="wrap">
+        <span class="eyebrow">Coming to iPhone</span>
+        <h2>On Android today. iOS is next.</h2>
+        <p class="lead" style="margin: 14px auto 0; text-align: center">
+          Drop your email and I'll let you know the moment Ironmetrics lands on iOS.
+        </p>
+        <div class="form-slot">
+          <!-- ============================================================
+               KIT (ConvertKit) WAITLIST FORM
+               Replace everything inside .form-slot with your Kit embed:
+               Kit -> Grow -> Landing Pages & Forms -> create an inline form ->
+               "Embed" -> copy the HTML/JavaScript snippet and paste it here.
+               The placeholder form below is non-functional until you do.
+               ============================================================ -->
+          <form onsubmit="return false" aria-label="iOS waitlist (placeholder — swap for Kit embed)">
+            <input type="email" placeholder="you@email.com" aria-label="Email address" />
+            <button class="btn" type="submit">Notify me</button>
+          </form>
+          <p class="form-note">No spam — one email when iOS is live.</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="container">
-    <div class="logo-container">
-      <span class="logo-icon">I</span>
-    </div>
-    <h1>Ironmetrics</h1>
-    <p class="tagline">Legal Agreement & Policy Center</p>
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="wrap" style="max-width: 760px">
+        <h2 style="text-align: center; margin-bottom: 28px">Questions</h2>
+        <details>
+          <summary>Do I need to know how to train?</summary>
+          <p>
+            No. Ironmetrics picks your weights and reps for you based on your history — you just log
+            what you do. It's built so a complete beginner can progress correctly without a coach.
+          </p>
+        </details>
+        <details>
+          <summary>Why no iOS yet?</summary>
+          <p>
+            Android-first so I could nail the experience with one platform. iOS is on the roadmap —
+            join the waitlist above and you'll be first to know.
+          </p>
+        </details>
+        <details>
+          <summary>Is my data private?</summary>
+          <p>
+            Yes. No ads, no data resale. You can export your entire training history to a file, or
+            delete your account and all its data, from inside the app anytime.
+          </p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>
+            A 14-day free trial, then Ironmetrics Pro is $4.99/month or $39.99/year. Cancel anytime
+            in Google Play.
+          </p>
+        </details>
+      </div>
+    </section>
 
-    <div class="links-list">
-      <a href="privacy.html" class="legal-link">
-        <span>Privacy Policy</span>
-        <span class="link-arrow">&rarr;</span>
-      </a>
-      <a href="terms.html" class="legal-link">
-        <span>Terms of Service</span>
-        <span class="link-arrow">&rarr;</span>
-      </a>
-      <a href="data-deletion.html" class="legal-link">
-        <span>Data Deletion Request</span>
-        <span class="link-arrow">&rarr;</span>
-      </a>
-    </div>
-
+    <!-- FOOTER -->
     <footer>
-      &copy; 2026 The Big M. All rights reserved.<br>
-      Need support? Contact us at <a href="mailto:thebigm1019@gmail.com">thebigm1019@gmail.com</a>
+      <div class="wrap">
+        <div>© <span id="yr">2026</span> Ironmetrics · Built by one lifter who codes</div>
+        <div class="links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="data-deletion.html">Data deletion</a>
+          <a href="mailto:thebigm1019@gmail.com">Support</a>
+          <!-- Update the handle if your Instagram is different -->
+          <a href="https://instagram.com/ironmetrics" rel="noopener">Instagram</a>
+        </div>
+      </div>
     </footer>
-  </div>
 
-</body>
+    <script>
+      document.getElementById("yr").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- ================================================================
+         CLOUDFLARE WEB ANALYTICS (privacy-first, free, no cookies)
+         Cloudflare dashboard -> Analytics & Logs -> Web Analytics -> Add a site
+         (ironmetricsapp.com) -> copy the <script defer ...> beacon -> paste here.
+         ================================================================ -->
+  </body>
 </html>
