@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- This URL carries a single-use sign-in code. It must reach the app and nothing else:
+       no referrer, no fonts, no analytics, no other page in its history. -->
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ironmetrics — Opening Ironmetrics</title>
+  <style>
+    :root { --bg: #f3f4f6; --card: #ffffff; --text: #111827; --muted: #4b5563; --accent: #3b82f6; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0b0f19; --card: #111827; --text: #f3f4f6; --muted: #9ca3af; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem;
+    }
+    main { background: var(--card); border-radius: 16px; padding: 2rem; max-width: 420px; text-align: center; }
+    h1 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    p { color: var(--muted); margin-bottom: 1.5rem; }
+    a.button {
+      display: inline-block; background: var(--accent); color: #ffffff; text-decoration: none;
+      font-weight: 600; padding: 0.85rem 1.5rem; border-radius: 999px; min-height: 48px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Opening Ironmetrics</h1>
+    <p>Tap the button to finish in Ironmetrics. If nothing happens, open this link on the phone where Ironmetrics is installed.</p>
+    <a id="open" class="button" href="ironmetrics://auth/callback">Open Ironmetrics</a>
+  </main>
+  <script>
+    // Android opens this link straight in the app once its App Link is verified, so this page
+    // loads only when it is not: an app build from before App Links, or a device without the
+    // app. Hand the same query (the sign-in code, or the error) to the app's own scheme, which
+    // every build understands. Chrome may refuse the automatic hop without a tap, which is what
+    // the button is for.
+    (function () {
+      var target = 'ironmetrics://auth/callback' + window.location.search + window.location.hash;
+      document.getElementById('open').setAttribute('href', target);
+      window.location.replace(target);
+    })();
+  </script>
+</body>
+</html>
