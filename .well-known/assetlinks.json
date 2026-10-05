@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thebigm.ironmetrics",
+      "sha256_cert_fingerprints": [
+        "FA:E0:3B:48:62:25:2B:F0:7F:13:54:0C:6F:27:D1:CE:DD:73:BC:02:93:2E:33:27:A8:A1:76:8D:67:CE:ED:57",
+        "9B:49:40:79:DB:6D:0E:E4:17:50:21:F2:24:BA:16:B5:37:83:37:04:42:1C:B6:14:54:31:3B:D6:4F:AC:31:A7"
+      ]
+    }
+  }
+]
