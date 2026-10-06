@@ -152,11 +152,11 @@
     
     <h1>Data Deletion Request</h1>
     <div class="dates">
-      <strong>Last updated:</strong> September 30, 2026
+      <strong>Last updated:</strong> October 5, 2026
     </div>
 
     <p>You can delete your <strong>Ironmetrics</strong> account and all of its associated data at any time. This page explains both the in-app path and the email path, what gets deleted, and how long it takes.</p>
-    <p>This applies to data we hold on your behalf in our Supabase backend and in any optional crash-reporting backend.</p>
+    <p>This applies to data we hold on your behalf in our Supabase backend and in our crash-reporting provider.</p>
 
     <h2>Option 1 — Delete from inside the App (recommended)</h2>
     <p>This is the fastest path and removes everything in one step.</p>
@@ -196,12 +196,13 @@
       <li>All your <strong>profile metadata</strong> (display name, account creation date).</li>
       <li>Any pending <strong>offline workouts</strong> stored on the device — these are removed when you delete your account from inside the App, and also when you uninstall the App. (They are <strong>not</strong> cleared by signing out alone, so signing back into the same account on the same device will still upload them on the next sync.)</li>
     </ul>
-    <p>Database foreign-key cascades remove all of this in a single transaction. There is no soft-delete or hidden retention period for user content.</p>
+    <p>Database foreign-key cascades remove all of this. There is no soft-delete or hidden retention period for user content.</p>
 
     <h2>What is not deleted by this request</h2>
     <ul>
       <li><strong>Backups.</strong> Our database provider retains short-lived encrypted backups for disaster recovery. These backups roll off automatically within 30 days. Restored data is never re-introduced into the live system unless we are recovering from a catastrophic failure, in which case your deletion request would be re-applied.</li>
-      <li><strong>Anonymized crash reports.</strong> If crash reporting was enabled and the App crashed during your sessions, anonymized stack traces (with no email or workout content) may exist in our crash-reporting provider's logs. These reports are automatically deleted after 90 days and cannot be linked to you after account deletion.</li>
+      <li><strong>Crash reports.</strong> If the App crashed during your sessions, crash reports (stack traces with no email or workout content) may exist in our crash-reporting provider's logs. These reports are automatically deleted after 90 days and cannot be linked to you after account deletion.</li>
+      <li><strong>Purchase records.</strong> Google Play and RevenueCat keep records of your purchases where they are needed for billing, tax, and legal purposes. RevenueCat's copy is tied to an anonymous account identifier, not your email.</li>
       <li><strong>Support correspondence.</strong> Emails you sent to support remain in our inbox unless you ask us to delete them as part of the same request. Add <em>"and please delete my support correspondence"</em> to your email if you want this.</li>
     </ul>
 
@@ -234,7 +235,7 @@
           <td>Within 30 days</td>
         </tr>
         <tr>
-          <td>Anonymized crash reports purged</td>
+          <td>Crash reports purged</td>
           <td>Within 90 days</td>
         </tr>
       </tbody>

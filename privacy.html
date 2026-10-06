@@ -169,7 +169,7 @@
     <h1>Privacy Policy</h1>
     <div class="dates">
       <strong>Effective date:</strong> May 19, 2026<br>
-      <strong>Last updated:</strong> September 30, 2026
+      <strong>Last updated:</strong> October 5, 2026
     </div>
 
     <h2>1. Who we are</h2>
@@ -181,14 +181,16 @@
     
     <h3>Information you provide directly</h3>
     <ul>
-      <li><strong>Account information</strong> — your email address and (optionally) a display name and password. If you sign in with Apple or Google OAuth, we receive a unique identifier and your verified email from those providers.</li>
-      <li><strong>Workout data you log</strong> — exercises, sets, weights, reps, RPE, notes, programs, templates, gym profiles, warm-up settings, and rest-timer preferences.</li>
+      <li><strong>Account information</strong> — your email address, your name, and a password if you sign up with email. If you sign in with Google, we receive your name, your verified email address, a link to your Google profile photo, and a unique account identifier from Google.</li>
+      <li><strong>Workout data you log</strong> — exercises, sets, weights, reps, RPE, notes, programs, templates, bodyweight entries, gym profiles, warm-up settings, and rest-timer preferences.</li>
+      <li><strong>Subscription information</strong> — if you start a free trial or subscribe, Google Play handles the payment. We receive your subscription status and purchase history (which plan, when it started and renews, and whether it is active) through RevenueCat, which links it to your account identifier. We never see your card or other payment details.</li>
       <li><strong>Support correspondence</strong> — messages you send to us via the in-app "Report a Bug" or "Feature Request" buttons, or directly to our support email.</li>
     </ul>
 
     <h3>Information collected automatically</h3>
     <ul>
-      <li><strong>Diagnostic and crash data</strong> — when crash reporting is enabled, the App sends anonymized error reports (stack traces, device model, OS version, App version) to our error-monitoring provider so we can fix bugs. Crash reports do <strong>not</strong> include your email, workout content, or any other directly identifying information.</li>
+      <li><strong>Diagnostic and crash data</strong> — when the App hits an error, it sends a report (stack trace, device model, OS version, App version) to our error-monitoring provider so we can fix bugs. Crash reports do <strong>not</strong> include your email, workout content, or any other directly identifying information.</li>
+      <li><strong>Bot-protection signals</strong> — when you create an account, sign in with a password, confirm or change your password, or ask for an account email (a password reset or a new confirmation link), the App runs an hCaptcha check. hCaptcha processes your IP address and device and interaction signals to tell people apart from automated abuse.</li>
       <li><strong>Authentication metadata</strong> — when you sign in, our authentication provider records the timestamp of the session and a hashed session token on your device so you stay signed in.</li>
     </ul>
 
@@ -201,7 +203,9 @@
     <h2>3. How we use your information</h2>
     <p>We use the information described above to:</p>
     <ul>
-      <li>Create and maintain your account.</li>
+      <li>Create and maintain your account, and send account emails such as sign-up confirmations and password resets.</li>
+      <li>Manage your subscription and unlock the features it pays for.</li>
+      <li>Protect sign-up, sign-in and account emails from automated abuse.</li>
       <li>Sync your workouts, programs, templates, and settings across your devices.</li>
       <li>Show you analytics and personal records derived from your own workout history.</li>
       <li>Respond to your support requests.</li>
@@ -215,7 +219,6 @@
     <ul>
       <li><strong>Performance of a contract</strong> — to provide you the App once you create an account.</li>
       <li><strong>Legitimate interest</strong> — to keep the App secure, diagnose crashes, and prevent abuse.</li>
-      <li><strong>Consent</strong> — for any optional crash reporting on devices where the platform requires explicit opt-in.</li>
       <li><strong>Legal obligation</strong> — when we must respond to lawful requests.</li>
     </ul>
 
@@ -224,7 +227,7 @@
       <li>Workout data, account information, and authentication metadata are stored in <strong>Supabase</strong> (a managed Postgres + auth provider, US region) on our behalf.</li>
       <li>All network traffic between the App and our backend is encrypted in transit (TLS).</li>
       <li>Database access is restricted by row-level security policies that scope each row to the user that owns it.</li>
-      <li>Crash reports, when enabled, are sent to our error-monitoring provider over TLS.</li>
+      <li>Crash reports are sent to our error-monitoring provider over TLS.</li>
       <li>Locally on your device, offline workouts queued for sync are stored using the platform's standard local-storage APIs (<code>AsyncStorage</code>).</li>
     </ul>
     <p>We use industry-standard safeguards, but no system is perfectly secure. If you become aware of a vulnerability, please contact us at <a href="mailto:thebigm1019@gmail.com">thebigm1019@gmail.com</a>.</p>
@@ -247,12 +250,27 @@
         </tr>
         <tr>
           <td>Functional Software, Inc. (Sentry)</td>
-          <td>Optional crash reporting</td>
+          <td>Crash reporting</td>
           <td>United States</td>
         </tr>
         <tr>
-          <td>Apple Inc. / Google LLC</td>
-          <td>OAuth sign-in (if you use Apple/Google sign-in)</td>
+          <td>Google LLC</td>
+          <td>Google sign-in (if you use it) and Google Play payments</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>RevenueCat, Inc.</td>
+          <td>Subscription management: links your Google Play purchases to your account</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Intuition Machines, Inc. (hCaptcha)</td>
+          <td>Bot protection on sign-up, sign-in and account emails</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Resend</td>
+          <td>Delivers account emails (sign-up confirmations, password resets)</td>
           <td>United States</td>
         </tr>
         <tr>
@@ -269,6 +287,7 @@
       <li><strong>Account and workout data</strong> — retained while your account exists. If you delete your account (see Section 9), all associated rows are removed within 30 days.</li>
       <li><strong>Authentication sessions</strong> — retained until the session expires or you sign out.</li>
       <li><strong>Crash reports</strong> — retained for up to 90 days by our crash-reporting provider, then automatically purged.</li>
+      <li><strong>Purchase records</strong> — kept by Google Play and RevenueCat where they are needed for billing, tax, and legal purposes, so they can outlast your account.</li>
       <li><strong>Support correspondence</strong> — retained for up to 24 months unless you ask us to delete it sooner.</li>
     </ul>
 
